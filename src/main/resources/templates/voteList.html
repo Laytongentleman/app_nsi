@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Vote List</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+   </head>
+   <body>
+      <h1>Vote List</h1>
+      <a href="addVote">Add Vote</a>
+      <br/><br/>
+      <div>
+         <table border="1">
+            <tr>
+               <th>Vote value</th>
+            </tr>
+            <tr th:each ="vote : ${votes}">
+               <td th:utext="${vote.voteValue}">...</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

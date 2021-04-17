@@ -1,0 +1,2 @@
+org/layton/SpringBootThymeleaf/SpringBootThymeleafApplicationTests.java
+ org.layton.SpringBootThymeleaf.SpringBootThymeleafApplicationTests
