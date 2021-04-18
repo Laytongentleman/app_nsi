@@ -77,9 +77,9 @@
     </header>
     <div class="content">
         <tr th:each ="game : ${selectedGames}">
-            <td th:utext="${game.tags}">...</td>
-            <td th:utext="${game.description}">...</td>
-            <div class="box"> <a th:href="'/game_template?name='+ ${game.name}" class="bouton-fond"> <img th:src="@{${'/img/' + game.name + '.png'}}" th:alt="@{${'/img/' + game.name + '.png'}}"></a>  </div>
+            <!--<td th:utext="${game.tags}">...</td>
+            <td th:utext="${game.description}">...</td>-->
+            <div class="box"> <a th:href="'/game_template?id='+ ${game.id}" class="bouton-fond"> <img th:src="@{${'/img/' + game.id + '.png'}}" th:alt="@{${'/img/' + game.id + '.png'}}"></a>  </div>
 
         <!--<div class="box"><img src="/img/minecraft.png" alt="PAS D'IMAGE"></div>-->
 

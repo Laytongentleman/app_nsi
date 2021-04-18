@@ -7,15 +7,21 @@ public class Game {
     private String name;
     private int note;
     private String description;
+    private String id;
     private ArrayList<String> tags = new ArrayList<String>();
 
 
-    public Game(String name , int Note, String description, ArrayList<String> tags) {
+    public Game(String id, String name , int note, String description, ArrayList<String> tags) {
         this.name = name;
         this.description= description;
         this.note= note;
         this.tags= tags;
+        this.id = id;
 
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -33,4 +39,5 @@ public class Game {
     public ArrayList<String> getTags() {
         return tags;
     }
+
 }

@@ -1,6 +1,6 @@
 package org.layton.SpringBootThymeleaf.controller;
 
-
+import org.layton.SpringBootThymeleaf.model.Game;
 import org.layton.SpringBootThymeleaf.form.PersonForm;
 import org.layton.SpringBootThymeleaf.form.SearchForm;
 import org.layton.SpringBootThymeleaf.model.*;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.awt.*;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,17 +28,27 @@ import java.util.List;
 @Controller
 public class MainController {
     /*private static HashMap<String, Integer> games = new HashMap<String, Integer>();*/
-    private static ArrayList<Game> games = new ArrayList<Game>();
+    private  static  ArrayList<Game> games = new ArrayList<Game>();
     private static List<Person> persons = new ArrayList<Person>();
     private static List<Vote> votes = new ArrayList<Vote>();
     private String currentSearch = "";
-    private static ArrayList<Game> selectedGames = new ArrayList<Game>();
+    private  ArrayList<Game> selectedGames = new ArrayList<Game>();
 
     static {
         persons.add(new Person("Louis", "Nguyen"));
         persons.add(new Person("Leon", "Gard"));
-        games.add(new Game("HK", 10, "Une aventure au fin fond des ténèbres d'Hallownest..", new ArrayList<String>(Arrays.asList("Aventure", "Plateformer2D", "Metroidvania"))));
-        games.add(new Game("Minecraft", 10, "L'incroyable plateforme plus polyvalente qu'un couteau suisse!", new ArrayList<String>(Arrays.asList("Aventure", "Plateformer3D", "Openworld"))));
+        games.add(new Game("HK", "Hollow Knight", 10, "Une aventure au fin fond des ténèbres d'Hallownest..", new ArrayList<String>(Arrays.asList("Aventure", "Plateformer2D", "Metroidvania"))));
+        games.add(new Game("Minecraft", "Minecraft",7, "L'incroyable monde cubique aux possibilités plus qu'infinies !", new ArrayList<String>(Arrays.asList("Aventure", "Plateformer3D", "Openworld"))));
+        games.add(new Game("zeldabotw", "Zelda Breath Of The Wild",9, "Une épopée légendaire !", new ArrayList<String>(Arrays.asList("Aventure", "Action","Openworld"))));
+        games.add(new Game("zeldaoot", "Zelda Ocarina Of Time",8, "Une épopée légendaire !", new ArrayList<String>(Arrays.asList("Aventure", "Action","Openworld"))));
+        games.add(new Game("PL", "Professeur Layton et l'Étrange village",10, "Every puzzle has an answer !", new ArrayList<String>(Arrays.asList("Aventure", "Puzzle", "pointandclick"))));
+        games.add(new Game("PL2", "Professeur Layton et la boîte de Pandore", 10, "Every puzzle has an answer !", new ArrayList<String>(Arrays.asList("Aventure", "Puzzle", "pointandclick"))));
+        games.add(new Game("PL3", "Professeur Layton et le Destin Perdu", 10, "Every puzzle has an answer !", new ArrayList<String>(Arrays.asList("Aventure", "Puzzle", "pointandclick"))));
+        games.add(new Game("PL4", "Professeur Layton et l'Appel du Spectre", 8, "Every puzzle has an answer !", new ArrayList<String>(Arrays.asList("Aventure", "Puzzle", "pointandclick"))));
+        games.add(new Game("Undertale", "Undertale", 9, "   In this world...it’s kill or be killed..", new ArrayList<String>(Arrays.asList("Aventure", "RPG", "decisions"))));
+        games.add(new Game("LuigiM2", "Luigi's Mansion 2",7, "Depuis que Luigi a retrouvé son bon vieil aspirateur, la chasse aux fantomes est déclarée!", new ArrayList<String>(Arrays.asList("Aventure", "Plateformer3D", "Openworld"))));
+        games.add(new Game("Teeworld", "Teeworld", 10, "Des ronds, un parcours, des guns et du fun", new ArrayList<String>(Arrays.asList("Multijoueur", "Plateformer2D", "Action"))));
+
 
     }
     // application.properties
@@ -132,17 +143,92 @@ public class MainController {
 
             }
 
-        }else{
-            for (Game game:  games) {
+        }else {
+            for (Game game : games) {
                 if (game.getName().equalsIgnoreCase(currentSearch)) {
                     selectedGames.add(game);
                 } else {
-                    System.out.println(game.getName() + " " + "search is:" + currentSearch);
+                    System.out.println(game.getName() + " but " + "search is:" + currentSearch);
                 }
+            }
+            for (Game game : games) {
+                for (String tag : game.getTags()) {
+                    if (tag.equalsIgnoreCase(currentSearch)) {
+                        selectedGames.add(game);
+                    }
+                }
+            }
+            if (selectedGames.size() < 1) {
 
+                for (Game game : games) {
+                    for (int i = 0; i < game.getName().toCharArray().length; i++) {
+                        int max_occ = 0;
+                        int occ = 0;
+                        if (Character.toLowerCase(game.getName().toCharArray()[i]) == Character.toLowerCase(currentSearch.toCharArray()[0])) {
+                            for (int j = 0; j < currentSearch.toCharArray().length; j++) {
+                                if (i + j < game.getName().toCharArray().length && j < currentSearch.toCharArray().length) {
+                                    if (Character.toLowerCase(game.getName().toCharArray()[i + j]) == Character.toLowerCase(currentSearch.toCharArray()[j])) {
+                                        occ++;
+                                    } else {
+                                        occ = 0;
+                                    }
+                                    if (occ > max_occ) {
+                                        max_occ = occ;
+                                    }
+
+
+                                } else {
+                                    break;
+
+                                }
+                            }
+                        }
+                        if (max_occ > 2) {
+                            selectedGames.add(game);
+                        }
+                    }
+                    for (String tag : game.getTags()) {
+                        for (int i = 0; i < tag.toCharArray().length; i++) {
+                            int max_occ = 0;
+                            int occ = 0;
+                            if (Character.toLowerCase(tag.toCharArray()[i]) == Character.toLowerCase(currentSearch.toCharArray()[0])) {
+                                for (int j = 0; j < currentSearch.toCharArray().length; j++) {
+                                    if (i + j < tag.toCharArray().length && j < currentSearch.toCharArray().length) {
+                                        if (Character.toLowerCase(tag.toCharArray()[i + j]) == Character.toLowerCase(currentSearch.toCharArray()[j])) {
+                                            occ++;
+                                        } else {
+                                            occ = 0;
+                                        }
+                                        if (occ > max_occ) {
+                                            max_occ = occ;
+                                        }
+
+                                    } else {
+                                        break;
+                                    }
+                                }
+                            }
+                            if (max_occ > 2) {
+                                selectedGames.add(game);
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
-        }
+
+
+            /*
+            for (Game game: games
+                 ) {
+
+                if(game.getTags().contains(currentSearch)){
+                    selectedGames.add(game);
+                }
+
+            }*/
+
 
         currentSearch = "";
 
@@ -195,8 +281,16 @@ public class MainController {
     }
 
     @RequestMapping(value = {"/game_template"}, method = RequestMethod.GET)
-    public String showGame(@RequestParam("name") String name, Model model){
-        model.addAttribute("name", name);
+    public String showGame(@RequestParam("id") String id, Model model){
+        for (Game game: games
+             ) {
+            if (game.getId().equalsIgnoreCase(id)){
+                model.addAttribute("game", game);
+                System.out.println(game.getName() +" "+ game.getNote());
+            }
+
+        }
+
         return "game_template";
     }
 

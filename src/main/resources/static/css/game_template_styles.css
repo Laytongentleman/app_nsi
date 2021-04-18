@@ -1,0 +1,507 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.google.com/share?selection.family=Press%20Start%202P");
+
+body{
+    position:relative;
+    content: "";
+    color: white;
+    height: inherit;
+    background-color: #000;
+    height: 100%;
+    margin: 0;
+}
+body::after{
+    content: "";
+    background: url("/img/black-mosaic-tiles.png");
+    opacity: 0.65;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
+
+
+
+header{
+position: fixed;
+height: 8em;
+z-index: 100;
+top: 0px;
+right: 0px;
+left: 0px;
+display: inline-block;
+justify-content: space-around;
+align-items: center;
+padding: 0px 0px;
+background-color: #000000;
+border: 0px solid ;
+width: 100%;
+}
+
+a:visited, a:hover, a:active, a:focus ,a:link {
+color: rgb(255, 255, 255) ;
+text-decoration: none !important;
+outline: none !important;
+
+ }
+
+nav.menu ul li{
+position: relative;
+
+top: 0px;
+list-style: none;
+background-color: black;
+display: inline-block;
+padding-top: 1em;
+padding-bottom: 1px;
+padding-left: 0em;
+padding-right:0em;
+height: 50px;
+
+text-decoration: none !important;
+outline: none !important;
+font-size: 1.5em;
+font-weight: bolder;
+font-family: "Poppins", serif;
+color: white;
+/*margin-inline: 15px;
+font-family:"Poppinss", sans-serif;*/
+/* border: darksalmon;
+border-width: 2px;
+border-style: solid;
+border-radius: 20px;s
+color: white;*/
+
+}
+html {
+scroll-behavior: smooth;
+height: 100em;
+}
+button:focus {
+outline: none;
+box-shadow: none;
+}
+
+
+
+nav.menu ul{
+display: flex;
+justify-content: center;
+max-height: 8em;
+height: 8em;
+width: 80%;
+padding: 0px;
+margin: 0px;
+justify-content: space-between;
+align-items: flex-start;
+
+}
+
+nav.menu{
+
+display: flex;
+justify-content:center;
+margin-top: 1em;
+align-items: center;
+}
+
+
+header div#ban{
+background-color: rgb(0, 0, 0);
+height: 8em;
+width: 100%;
+
+}
+div#origines h1{
+font-family: 'Press Start 2P', cursive;
+color: white;
+width: auto;
+text-decoration-line: underline;
+font-size: 4em;
+}
+div#origines{
+margin-left: 5em;
+height:700em;
+margin-top: 100em;
+}
+div#origines p{
+
+width: 60%;
+}
+div#origines p{
+color: white;
+font-size: 1.3em;
+font-family: 'Press Start 2P', cursive;
+}
+
+
+
+div.content{
+    height: 100%;
+    color: white;
+    margin-top: 8em;
+    /*
+    position:relative;
+    content: "";
+    color: rgb(255, 255, 255);
+    height: inherit;
+    opacity: 1;
+    
+    position:relative;
+    content: "";
+
+    height: inherit;*/
+    
+   
+}
+
+
+/*Reset CSS*/
+
+img{
+height: 100%;
+}
+
+
+
+
+
+
+nav.menu ul li div.dropdown{
+padding-top: 0em;
+height: 3em;
+}
+
+
+.boutonmenuprincipal {
+font-weight: bolder;
+font-family: "Poppins", serif;
+background-color: #000000;
+color: rgb(255, 255, 255);
+border: none;
+cursor: pointer;
+padding:0px;
+margin-top:0px;
+font-size: 1em;
+padding-left: 2em;
+padding-right: 2em;
+padding-bottom: 0.5em;
+padding-top: 0.5em;
+}
+.boutonmenuprincipal:hover {
+box-shadow: 0px 0px 100px rgb(154, 255, 233);
+background-color: rgb(39, 204, 176);
+}
+.dropdown {
+padding-top: 0em;
+padding-bottom: 1em;
+position: relative;
+display: inline-block;
+}
+
+
+.dropdown-child {
+padding-top: -0.5em;
+display: none;
+min-width: 50px;
+opacity: 1;
+}
+
+
+
+.dropdown-child a {
+
+padding-top: 1em;
+padding-left: 0.6em;
+padding-bottom: 1em;
+padding-right: 0.6em;
+text-decoration: none;
+display: block;
+}
+.dropdown-btn{
+opacity: 0.7;
+/*background-color: black;*/
+
+}
+.dropdown-btn:hover{
+opacity: 1;
+/*box-shadow: 0px 0px 100px rgb(154, 255, 233);
+color: rgb(255, 255, 255);
+background-color: rgb(39, 204, 176);*/
+}
+
+
+.dropdown:hover .dropdown-child {
+display: block;
+}
+
+li#drop{
+margin-top: 0em !important;
+padding-top: 0.5em;
+}
+
+
+
+.btn:hover{
+transform: scale(1.1);
+
+}
+
+.btn{
+border: none;
+font-family: "Poppins",serif;
+border-radius: 6px;
+cursor: pointer;
+color: #fff;
+background-size: 200%;
+transition: 0.3s all;
+
+}
+/* background-image: linear-gradient(to left,#38e580,#009432,#C4E538);*/
+
+.btn1{
+background-image: linear-gradient(to left,#000000,rgb(39, 204, 176),#000000);
+}
+
+.btn2{
+background-image: linear-gradient(to left,#000000,rgb(39, 204, 176),#000000);
+}
+
+.btn3{
+background-image: linear-gradient(to left,#12CBC4,#0652DD,#12CBC4);
+}
+
+.btn4{
+background-image: linear-gradient(to left,#FDA7DF,#9980FA,#FDA7DF);
+}
+
+.btn:hover{
+background-position: right;
+}
+
+
+
+.menuu input{
+    font-family: "Poppins", serif;
+    margin: 0.2em 0.5em;
+    display: inline;
+    background-color: #000000;
+    color: white;
+}
+
+.invisible {
+display: none;
+}
+.menu-toggle {
+cursor: pointer;
+}
+.menuu {
+    
+    position: relative;
+    margin: 0em 45%;
+    background-color: #12CBC4;
+    height: 30px;
+    width: 200px;
+}
+
+.bouton-fond{
+    display: flex;
+    overflow: hidden;
+    border-style: ridge;
+    border-width: 0.0em;
+    height: 45em;
+    width: 80em;
+    opacity: 0.8;
+    justify-content: center;
+}
+
+div.row{
+
+    margin-bottom: 15em;
+    display: flex;
+    width: 100%;
+}
+.column{
+    display: flex;
+    justify-content: center;
+}
+.cl{
+    width: 60%;
+}
+.cr{
+    width: 40%;
+}
+.cl2{
+    width: 52%;
+}
+.cr2{
+    width: 48%;
+}
+
+.title{
+
+    text-align: center;
+    height: 2em;
+    vertical-align: middle;
+    width: 20em;
+    margin-top: 0em;
+    margin: auto;
+
+    display: table-caption;
+
+}
+
+
+div#description{
+
+    vertical-align: text-bottom;
+    display: table-cell;   
+}
+div#description p{  
+    margin-top: 0em;
+    display: block;
+    word-wrap: normal;
+    margin-left: 7em; 
+    font-size: 1.2rem;
+    height: 100%;
+    width: 70%;
+    text-align:center;  
+
+}
+
+.informations{
+    margin-top: 3em;
+    font-family: "Poppins", serif;
+    width:300px;
+    height:100px;  
+    display: table; 
+    height: 100%;
+    width: 100%;  
+}
+
+.trow{
+    display: table-row;
+    margin-left: 0em;
+    justify-content: center;
+    height: 14em;
+    
+}
+.box{
+    margin-top: 1em;
+    margin-bottom: 0em;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 9em;
+    width: 10em;
+    height: 10em;
+    /*display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;*/
+    box-shadow: 0 30px 60px rgba(0,0,0,.2) ;
+}
+.box .percent{
+    max-width:100%;
+    max-height:100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+
+}
+.box .percent svg{
+    width: 10em;
+    height: 10em;
+    display: inline-block;
+    margin-left: 0em;
+    margin-right: 10em;
+    position: absolute;
+
+}
+
+.box .percent svg circle{
+    margin-left: 0px;
+    padding-left: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke-width: 15;
+    stroke: #000;
+    transform: translate(0.5em,0.5em);
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+}
+.box .percent svg circle:nth-child(1){
+    stroke-dashoffset: 0;
+    stroke:#f3f3f3;
+}
+.box .percent svg circle:nth-child(2).commu{
+    
+    stroke:#03f484;
+}
+.box .percent  svg circle:nth-child(2).nous{
+    
+    stroke:#bc03f4;
+}
+
+.box .percent .value{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: 5em;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+}
+
+.box .percent .value h2{
+    font-size: 48px;
+    text-align: center;
+}
+.box .percent .value h2 span{
+    font-size: 24px;
+}
+.box .text {
+    margin-top: 50px;
+    padding: 10px 0 0;
+    color: #999;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+div#review{
+
+    vertical-align: text-bottom;
+    display: table-cell;   
+}
+div#review p{
+    height:1em;
+    margin-top: 0em;
+    display: block;
+    margin-left: 7em; 
+    font-size: 1.2rem;
+    width: 70%;
+    text-align:center;  
+}
+video{
+    width: 50em;
+}
+figure{
+    width: 100%;
+    margin-left: 0em !important;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;;
+    margin: 0em 0em !important;
+}

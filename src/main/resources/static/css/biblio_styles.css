@@ -171,19 +171,21 @@ font-size: 1.3em;
 font-family: 'Press Start 2P', cursive;
 }
 
+
 div.content{
-
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: flex-start;
-align-items: baseline;
-align-content: stretch;
-margin-left: 3em;
-color: white;
-margin-top: 8em;
-
+    height: 100%;
+    margin-left: 3em;
+    color: white;
+    margin-top: 8em;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
 }
+}
+
 
 
 /*Reset CSS*/
@@ -333,6 +335,7 @@ cursor: pointer;
     height: 30px;
     width: 200px;
 }
+
 .bouton-fond{
     display: flex;
     overflow: hidden;

@@ -2,46 +2,46 @@
 
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
     <head>
         <!-- le titre -->
         <title>Le Site de N.S.I.</title>
         <!-- le type d'encodage-->
         <meta charset="utf-8">
         <!-- le lien vers le fichier css-->
-        <link rel="stylesheet" href="/css/biblio_styles.css">
+        <link rel="stylesheet" href="/css/game_template_styles.css">
         <link rel="icon" href="/icon.png" type="image/png" >
 
-        
+
         <meta name="author" content="Louis Nguyen Minh Tan, Léon Gard, Elisa Le Fay">
 
 
-    
-    
+
+
     </head>
 
 
-<body>
+    <body>
     <header>
 
         <nav class="menu">
             <ul>
-            
+
                 <li id="drop">
                     <div class="dropdown">
                         <button class="boutonmenuprincipal">Navigation</button>
                         <div class="dropdown-child" >
-                        <a  class="dropdown-btn btn btn1" href="/index.html">Menu Principal</a>
-                        <a class="dropdown-btn btn btn2" href="/pages/dev.html">Developpement</a>
-                        <a class="dropdown-btn btn btn3" href="/pages/biblio.html">Bibliothèque</a>
-                        <a class="dropdown-btn btn btn4" href=""></a>
-                        <a class="dropdown-btn" href=""></a>
-                        
+                            <a  class="dropdown-btn btn btn1" href="/index.html">Menu Principal</a>
+                            <a class="dropdown-btn btn btn2" href="/pages/dev.html">Developpement</a>
+                            <a class="dropdown-btn btn btn3" href="/pages/biblio.html">Bibliothèque</a>
+                            <a class="dropdown-btn btn btn4" href=""></a>
+                            <a class="dropdown-btn" href=""></a>
                         </div>
-                    </div>
+                        </div>
                 </li>
                 <li class="menu-toggle">Recherche</li>
 
-                
+
                 <li> <a href="/pages/contact.html">Contact</a>  </li>
 
             </ul>
@@ -52,21 +52,99 @@
 
 
     </header>
-    <div class="content">
-        <h1 th:text="${name}">...</h1>
-        <!--<div class="box"><img src="/img/Hollow-Knight-Gameplay-Wallpaper-HD.jpg" alt=""></div>-->
+    <div class="content" style="">
+        <div class="row">
+            <div class="column cl">
+                <div class="bouton-fond">  <img th:src="@{${'/img/' + game.id + '.png'}}" th:alt="@{${'/img/' + game.id + '.png'}}">  </div>
+            </div>
+
+            <div class="column cr">
+                <div class="informations">
+                    <h1 class="title" th:text="${game.name}">...</h1>
+                    <div class="trow">
+                        <div class="box nous">
+                            <div class="percent">
+                                <svg>
+                                    <circle cx="70" cy = "70" r="70"></circle>
+                                    <circle class="nous" cx="70" cy = "70" r="70" th:style="@{${'stroke-dashoffset: calc(440 - (440*' + game.note + ')/10) ;' }}"></circle>
+                                </svg>
+                                <div class="value">
+                                    <h2 th:text="${game.note}">
+                                    </h2>
+                                    <span>/10</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="percent">
+                                <svg>
+                                    <circle cx="70" cy = "70" r="70"></circle>
+                                    <circle class="commu" cx="70" cy = "70" r="70" style="stroke-dashoffset: calc(440 - (440*8) /10);"></circle>
+                                </svg>
+                                <div class="value">
+                                    <h2>8</h2>
+                                    <span>/10</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div id="description" >
+                        <p th:utext="${game.description}">...
+                        </p>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="column cl2">
+
+                <div class="informations">
+                    <h1 class="title">REVIEW</h1>
+                    <div id="review">
+                        <p>                        <p th:utext="${game.name}">...</p>
+                        <p>Contient les tags:</p>
+                        <p th:utext="${game.tags}">...</p></p>
+
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+
+            <div class="column cr2">
+                <figure>
+                    <video controls th:src="@{${'/videos/'+ game.id+ '.mp4'}}"></video>
+                </figure>
+            </div>
+
+
+        </div>
+
+
+
     </div>
     <script src="/js/toggle_search.js"></script>
-    
-    
 
 
 
 
 
-</body>
 
-</html>
+
+    </body>
+
+    </html>
+
 
 
 

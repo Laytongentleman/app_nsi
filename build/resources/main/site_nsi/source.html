@@ -1,0 +1,311 @@
+<!-- Start of the instance-->
+
+
+<!-- Donne le type de document -->
+<!DOCTYPE html>
+<html>
+
+<!-- head contient des informations générales -->
+<head>
+    <!-- le titre -->
+    <title>Le Site de Louis ^^</title>
+    <!-- le type d'encodage-->
+    <meta charset="utf-8">
+    <!-- le lien vers le fichier css-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="/layton_icon.png" type="image/png" >
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Louis Nguyen Minh Tan">
+    
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+
+</head>
+
+<!-- La page web est stockée dans le body-->
+
+<body class="row">
+    <!--colonne de gauche-->
+    <div class="col-lg-2" id="left">
+        <img src="/img/kermit.gif" alt="" width="100%">
+
+        <audio id="invisible"
+            controls autoplay loop 
+            src="/musics/Sootopolis City (Pokémon RubySapphire) Jazz Cover - The Consouls.ogg">
+        </audio>
+    </div>
+
+    <!--colonne du milieu/principale-->
+    <div class="col-lg-8" id="mid">
+         <!--Haut de Page = header -->
+        <header>
+            <div><img src="img/layton_logo.png" height="110px" alt="Logo du site"></div>
+            <nav class = "menu_nav">
+                <!-- ul définie une liste, li est un élément de la liste-->
+                <ul>
+                    <li class = "btn">
+                        <!-- href # renvoie à la page du script-->
+                        <a href="index.html">
+                            Accueil
+                        </a>
+                    </li>
+                    <li class = "btn">
+                        <a href="news.html">
+                            Actualité
+                        </a>
+                    </li>
+                    <li class = "btn">
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+                    <li class = "btn">
+                        <a href="music.html">
+                            Music
+                        </a>
+                    </li>
+                    <li class = "btn">
+                        <a href="manga.html">
+                            Manga & Anime
+                        </a>
+                    </li>
+                    <li class = "btn" id ="book">
+                        <a href="books.html">
+                            Books
+                        </a>
+                    </li>
+                    <li class = "btn">
+                        <a href="Pac-Man.html">
+                            Maths
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!--<img src="img/kermit.gif"   height="100">
+            <label for="pwd">Password:</label>
+            <input type="password" id="pwd_to_master" name="pwd">-->
+            <button>
+                <a class="btn" id="admin">
+                    Behind the scene
+                </a>
+            </button>
+
+
+
+            <!--<div class = "banner"> </div>-->
+            <!-- bannière -->
+            <!--<img src="img/banner_pokemon.png" class="banner"> -->
+
+            <!--exemple de texte-->
+        </header>
+        <!-- End of the instance-->    
+        <!--
+        <div class="sub_header">
+            <img class = "banner" src="/img/banner_pokemon.png">
+        </div>-->
+
+
+    <!-- Carousel-->
+    <article class="col-md-4">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-interval="2000">
+            <ol class="carousel-indicators">
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+            <div class="carousel-item active" id="percent">
+                <div class="box">
+                    <h2 class="text"> Creation of the website </h2>
+                    <div class="percent">
+                        <svg>
+                            <circle cx="70" cy = "70" r="70"></circle>
+                            <circle cx="70" cy = "70" r="70"></circle>
+                        </svg>
+                        <div class="value">
+                            <h2>15<span>%</span></h2>
+                        </div>
+                    </div>
+
+                </div>
+                <!--<img src="/img/music_logo.jpeg" class="d-block w-100" alt="..lol.">-->
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/img/pokemon_logo.png" class="d-block w-100" alt="..." >
+                <div class="carousel-caption d-none d-md-block">
+                <h5>Second slide label</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/img/layton_logo.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/res/adoberip.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </a>
+        </div>
+
+    </article>
+        
+    <div class="row" id="content">
+            <div class="col-md-6">
+                  <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                      <strong class="d-inline-block mb-2 text-primary">Algorithmic & Code</strong>
+                      <h3 class="mb-0">Python on work</h3>
+                      <div class="mb-1 text-muted">Janvier 2020</div>
+                      <p class="card-text mb-auto">Il est grand temps de passer au niveau supérieur de Python.</p>
+                      <a href="#" class="stretched-link">Continue reading</a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <img src="/img/python_logo.png" alt=".." width="240" height="250">
+                        
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                      <strong class="d-inline-block mb-2 text-success">Connection</strong>
+                      <h3 class="mb-0">Join me on social media </h3>
+                      <div class="mb-1 text-muted">no aired yet</div>
+                      <p class="mb-auto">Come talk and spend time with me.</p>
+                      <a href="#" class="stretched-link">Continue reading</a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <img src="/img/discord_logo.png" alt=".." width="240" height="250">
+                      <!--<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>-->
+                    
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                      <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-success">Divers</strong>
+                        <h3 class="mb-0">Manga</h3>
+                        <div class="mb-1 text-muted">no aired yet</div>
+                        <p class="mb-auto">Reading manga or watching animes ? I'm a big fan too.</p>
+                        <a href="#" class="stretched-link">Continue reading</a>
+                      </div>
+                      <div class="col-auto d-none d-lg-block">
+                          <img src="/img/manga_thumb.png" alt=".." width="270" height="250">
+                        <!--<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>-->
+                      
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                      <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-success">Entertainment</strong>
+                        <h3 class="mb-0">My Video Games Selection </h3>
+                        <div class="mb-1 text-muted">no aired yet</div>
+                        <p class="mb-auto">Wanna play, chill and even try hard ?</p>
+                        <a href="#" class="stretched-link">Continue reading</a>
+                      </div>
+                      <div class="col-auto d-none d-lg-block">
+                          <img src="/img/controller_logo.png" alt=".." width="240" height="250">
+                        <!--<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>-->
+                      
+                      </div>
+                    </div>
+                  </div>
+    </div>
+        <!-- Contenu-->
+        <!--
+        <div id = "content">
+
+            <div class="leftbox">
+                
+                <div class="article" id="hey">
+                    <p>
+                        salut 1
+                    </p>
+                </div>
+                <div class="article" id="hey">
+                    <p>
+                        salut 2
+                    </p>
+                </div>
+
+            </div>
+            <div class="rightbox">
+                <h1>
+                    Moi actuellement:
+                </h1>
+            </div>
+        </div>
+        -->
+
+
+        <!-- Bas de Page = footer-->
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+                <p>
+                    Copyright &copy; Louis 2020-2021 - not All right reserved
+                </p>
+                <p class="float-end"><a href="#">Back to top</a></p>
+              <span class="text-muted">Place sticky footer content here.</span>
+            </div>
+          </footer>
+    </div>
+
+    <!--colonne de droite-->
+    <div class="col-lg-2" id="right">
+
+    </div>
+    </div>
+
+    
+    <!--
+    <h1 class="headline">
+        Enchanté !
+    </h1>
+   
+    <P class="welcome">
+        Bonjour à toi jeune entrepreneur ^^
+    </P>
+    <P class="welcoming">
+        Tache de trouver ce qui t'intéresses UwU
+    </P>
+    <a href="https://godotengine.org/" target="_BLANK">
+        Viens sur Godot
+    </a>
+
+    <img src="img/Akame!.png" width = 500 height = 100>-->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    
+
+    
+          
+
+</body>
+</html>
