@@ -44,17 +44,42 @@
 
             </ul>
         </nav>
-        <div class="invisible menuu">
-            <input type="text">
+        <div class="invisible menuu" >
+
+
+            <form th:object="${searchForm}" th:action="@{/search}"  method="POST">
+               Recherche:
+                   <input type="text" th:field="*{value}" />
+                <br/>
+                   <input type="submit" value="Chercher" />
+               </form>
+
+
+
+
+
+
+
+
+            <!--<form th:action="@{/addPerson}"
+                 th:object="${personForm}" method="POST">
+               First Name:
+               <input type="text" th:field="*{firstName}" />
+               <br/>
+               Last Name:
+               <input type="text" th:field="*{lastName}" />
+               <br/>
+               <input type="submit" value="Create" />
+           </form>-->
         </div>
 
 
     </header>
     <div class="content">
-        <tr th:each ="game : ${games}">
-            <td th:utext="${game.key}">...</td>
-            <td th:utext="${game.value}">...</td>
-            <div class="box"><img th:src="@{${'/img/' + game.key + '.png'}}" th:alt="@{${'/img/' + game.key + '.png'}}"></div>
+        <tr th:each ="game : ${selectedGames}">
+            <td th:utext="${game.tags}">...</td>
+            <td th:utext="${game.description}">...</td>
+            <div class="box"> <a th:href="'/game_template?name='+ ${game.name}" class="bouton-fond"> <img th:src="@{${'/img/' + game.name + '.png'}}" th:alt="@{${'/img/' + game.name + '.png'}}"></a>  </div>
 
         <!--<div class="box"><img src="/img/minecraft.png" alt="PAS D'IMAGE"></div>-->
 

@@ -12,5 +12,11 @@ org/layton/SpringBootThymeleaf/model/Note.java
  org.layton.SpringBootThymeleaf.model.Note
 org/layton/SpringBootThymeleaf/form/NoteForm.java
  org.layton.SpringBootThymeleaf.form.NoteForm
+org/layton/SpringBootThymeleaf/model/Game.java
+ org.layton.SpringBootThymeleaf.model.Game
+org/layton/SpringBootThymeleaf/form/SearchForm.java
+ org.layton.SpringBootThymeleaf.form.SearchForm
+org/layton/SpringBootThymeleaf/model/Search.java
+ org.layton.SpringBootThymeleaf.model.Search
 org/layton/SpringBootThymeleaf/controller/MainController.java
  org.layton.SpringBootThymeleaf.controller.MainController

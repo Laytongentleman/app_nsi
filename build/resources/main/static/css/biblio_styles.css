@@ -185,16 +185,6 @@ margin-top: 8em;
 
 }
 
-div.box{
-display: flex;
-overflow: hidden;
-background-color: #0652DD;
-border-style: solid;
-border-width: 0.25em;
-height: 30em;
-width: 22em;
-justify-content: center;
-}
 
 /*Reset CSS*/
 
@@ -342,4 +332,14 @@ cursor: pointer;
     background-color: #12CBC4;
     height: 30px;
     width: 200px;
+}
+.bouton-fond{
+    display: flex;
+    overflow: hidden;
+    background-color: #0652DD;
+    border-style: solid;
+    border-width: 0.25em;
+    height: 30em;
+    width: 22em;
+    justify-content: center;
 }
