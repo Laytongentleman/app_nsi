@@ -2,10 +2,8 @@ package org.layton.SpringBootThymeleaf.controller;
 
 import org.layton.SpringBootThymeleaf.RestClientService;
 import org.layton.SpringBootThymeleaf.model.Game;
-import org.layton.SpringBootThymeleaf.form.PersonForm;
 import org.layton.SpringBootThymeleaf.form.SearchForm;
 import org.layton.SpringBootThymeleaf.model.*;
-import org.layton.SpringBootThymeleaf.form.VoteForm;
 import org.layton.SpringBootThymeleaf.form.NoteForm;
 import org.layton.SpringBootThymeleaf.model.Search;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
-import java.awt.*;
-import java.math.RoundingMode;
-import java.sql.Array;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -34,8 +26,6 @@ import java.util.List;
 public class MainController {
     /*private static HashMap<String, Integer> games = new HashMap<String, Integer>();*/
     private  static Game[] games;
-    private static List<Person> persons = new ArrayList<Person>();
-    private static List<Vote> votes = new ArrayList<Vote>();
     private String currentSearch = "";
     private  ArrayList<Game> selectedGames = new ArrayList<Game>();
     private Game current_game;
@@ -87,67 +77,11 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping(value = {"/personList"}, method = RequestMethod.GET)
-    public String personList(Model model){
-        model.addAttribute("persons", persons);
-
-        return "personList";
-    }
 
 
-    @RequestMapping(value = {"/addPerson"}, method = RequestMethod.GET)
-    public String showAddPersonPage(Model model) {
-        PersonForm personForm = new PersonForm();
-        model.addAttribute("personForm", personForm);
-
-        return "addPerson";
-    }
-
-    @RequestMapping(value = { "/addPerson" }, method = RequestMethod.POST)
-    public String savePerson(Model model, //
-                             @ModelAttribute("personForm") PersonForm personForm) {
-
-        String firstName = personForm.getFirstName();
-        String lastName = personForm.getLastName();
-
-        if (firstName != null && firstName.length() > 0 //
-                && lastName != null && lastName.length() > 0) {
-            Person newPerson = new Person(firstName, lastName);
-            persons.add(newPerson);
-
-            return "redirect:/personList";
-        }
-        model.addAttribute("errorMessage", errorMessage);
-        return "addPerson";
-    }
 
 
-    @RequestMapping(value = {"/addVote"}, method = RequestMethod.GET)
-    public String showAddvote(Model model) {
 
-        VoteForm voteForm = new VoteForm();
-        model.addAttribute("VoteForm", voteForm);
-
-        return "addVote";
-    }
-
-    @RequestMapping(value = {"/addVote"}, method = RequestMethod.POST)
-    public String saveVote(Model model, @ModelAttribute("voteForm") VoteForm voteForm ){
-        int voteValue = voteForm.getVoteValue();
-        Vote newVote = new Vote(voteValue);
-
-        votes.add(newVote);
-
-        return "redirect:/voteList";
-
-    }
-
-    @RequestMapping(value = {"/voteList"}, method = RequestMethod.GET)
-    public String voteList(Model model){
-        model.addAttribute("votes", votes);
-
-        return "voteList";
-    }
 
     @RequestMapping(value = {"/biblio"}, method = RequestMethod.GET)
     public String biblio(Model model){

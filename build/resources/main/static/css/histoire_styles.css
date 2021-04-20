@@ -54,14 +54,7 @@ nav.menu ul li{
     font-weight: bolder;
     font-family: "Poppins", serif;
     color: white;
-    /*margin-inline: 15px;
-    font-family:"Poppinss", sans-serif;*/
-    /*   border: darksalmon;
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 20px;s
-    color: white;*/
-    
+
 }
 html {
     scroll-behavior: smooth;
@@ -78,7 +71,7 @@ ul#frise{
 }
 ul#frise li{
     transition: 0.3s all;
-    margin-top: 5em;
+    margin-top: 4em;
     margin-left: 0em;
     padding-left: 0em;font-family: "Poppins", serif;
 }
@@ -91,7 +84,7 @@ ul#frise li  a{
     margin-left: 0em;
     font-size: 2.5em;
     border-style: none;
-    padding: 30px 30px;
+    padding: 25px 25px;
     background-color: black;
     cursor: pointer;
     border-radius: 50px;
@@ -174,7 +167,8 @@ div#origines p{
 }
 
 div.content{
-
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 0em;
 }
 
