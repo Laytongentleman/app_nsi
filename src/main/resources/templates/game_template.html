@@ -33,7 +33,7 @@
                         <div class="dropdown-child" >
                             <a  class="dropdown-btn btn btn1" href="/index.html">Menu Principal</a>
                             <a class="dropdown-btn btn btn2" href="/pages/dev.html">Developpement</a>
-                            <a class="dropdown-btn btn btn3" href="/pages/biblio.html">Bibliothèque</a>
+                            <a class="dropdown-btn btn btn3" href="/pages/biblio">Bibliothèque</a>
                             <a class="dropdown-btn btn btn4" href=""></a>
                             <a class="dropdown-btn" href=""></a>
                         </div>
@@ -55,7 +55,7 @@
     <div class="content" style="">
         <div class="row">
             <div class="column cl">
-                <div class="bouton-fond">  <img th:src="@{${'/img/' + game.id + '.png'}}" th:alt="@{${'/img/' + game.id + '.png'}}">  </div>
+                <div id="main"><img th:src="@{${'/img/' + game.id + '.png'}}" th:alt="@{${'/img/' + game.id + '.png'}}"> </div>
             </div>
 
             <div class="column cr">
@@ -86,12 +86,14 @@
                                     <span>/10</span>
                                 </div>
                             </div>
+                            <img id="add" src="/img/add.png" alt="adddddd">
                         </div>
                     </div>
                      <div id="description" >
                         <p th:utext="${game.description}">...
                         </p>
                     </div>
+
 
 
 
@@ -125,10 +127,40 @@
                 <figure>
                     <video controls th:src="@{${'/videos/'+ game.id+ '.mp4'}}"></video>
                 </figure>
+
+
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="column cl2">
+
+
             </div>
 
+            <div class="column cr2">
+
+                <div class="slider">
+                    <div class="slides">
+                        <tr th:each ="path : ${game.imgPath}">
+                        <div class="slide"><img th:src="@{${'/img/' + path}}" th:alt="@{${'/img/' + path }}"/></div>
+                    </div>
+                </div>
+                <!--
+                <tr th:each ="path : ${game.imgPath}">
+                    <div class="box"> <a th:href="'/game_template?id='+ ${game.id}" class="bouton-fond"> <img th:src="@{${'/img/' + path}}" th:alt="@{${'/img/' + path }}"></a>  </div>
+                -->
+
+
+
+
+            </div>
 
         </div>
+
+
+
 
 
 

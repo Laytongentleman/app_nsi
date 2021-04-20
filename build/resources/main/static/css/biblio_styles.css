@@ -174,7 +174,7 @@ font-family: 'Press Start 2P', cursive;
 
 div.content{
     height: 100%;
-    margin-left: 3em;
+    margin-left: 0.1em;
     color: white;
     margin-top: 8em;
 	display: flex;

@@ -307,7 +307,7 @@ cursor: pointer;
     width: 200px;
 }
 
-.bouton-fond{
+div#main{
     display: flex;
     overflow: hidden;
     border-style: ridge;
@@ -389,6 +389,15 @@ div#description p{
     height: 14em;
     
 }
+
+img#add{
+    display: block;
+    margin-left: 7.8em;
+    margin-top: 7.8em;
+    width: 4em;
+    height: 4em;
+}
+
 .box{
     margin-top: 1em;
     margin-bottom: 0em;
@@ -505,3 +514,53 @@ figure{
     margin-inline-end: 0px;;
     margin: 0em 0em !important;
 }
+
+div.bouton-fond{
+    display: flex;
+    overflow: hidden;
+    background-color: #0652DD;
+    border-style: solid;
+    border-width: 0.25em;
+    height: 30em;
+    width: 22em;
+    justify-content: center;
+}
+
+
+        .slider {
+            height: 30em;
+            width: 50em;
+            overflow: hidden;
+            margin: 150px auto;
+        }
+        .slides {
+            width: calc(50em * 2);
+            animation: glisse 10s infinite;
+        }
+        .slide {
+            float: left;
+        }
+
+        @keyframes glisse {
+            0% {
+                transform: translateX(0);
+            }
+            10% {
+                transform: translateX(0);
+            }
+            33% {
+                transform: translateX(-50em);
+            }
+            43% {
+                transform: translateX(-50em);
+            }
+            66% {
+                transform: translateX(-2560px);
+            }
+            76% {
+                transform: translateX(-2560px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }

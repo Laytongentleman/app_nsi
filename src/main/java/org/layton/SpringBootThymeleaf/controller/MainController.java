@@ -1,5 +1,6 @@
 package org.layton.SpringBootThymeleaf.controller;
 
+import org.layton.SpringBootThymeleaf.RestClientService;
 import org.layton.SpringBootThymeleaf.model.Game;
 import org.layton.SpringBootThymeleaf.form.PersonForm;
 import org.layton.SpringBootThymeleaf.form.SearchForm;
@@ -7,6 +8,7 @@ import org.layton.SpringBootThymeleaf.model.*;
 import org.layton.SpringBootThymeleaf.form.VoteForm;
 import org.layton.SpringBootThymeleaf.form.NoteForm;
 import org.layton.SpringBootThymeleaf.model.Search;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.PostConstruct;
 import java.awt.*;
 import java.sql.Array;
 import java.util.ArrayList;
@@ -28,13 +31,29 @@ import java.util.List;
 @Controller
 public class MainController {
     /*private static HashMap<String, Integer> games = new HashMap<String, Integer>();*/
-    private  static  ArrayList<Game> games = new ArrayList<Game>();
+    private  static Game[] games;
     private static List<Person> persons = new ArrayList<Person>();
     private static List<Vote> votes = new ArrayList<Vote>();
     private String currentSearch = "";
     private  ArrayList<Game> selectedGames = new ArrayList<Game>();
 
+    @Autowired
+    RestClientService restClientService;
+
+    @PostConstruct
+    public void initGames() {
+        games = restClientService.getAllGames();
+        for (Game g: games) {
+            System.out.println(g.getName());
+
+        };
+    }
+
+
+
     static {
+
+        /*
         persons.add(new Person("Louis", "Nguyen"));
         persons.add(new Person("Leon", "Gard"));
         games.add(new Game("HK", "Hollow Knight", 10, "Une aventure au fin fond des ténèbres d'Hallownest..", new ArrayList<String>(Arrays.asList("Aventure", "Plateformer2D", "Metroidvania"))));
@@ -48,7 +67,7 @@ public class MainController {
         games.add(new Game("Undertale", "Undertale", 9, "   In this world...it’s kill or be killed..", new ArrayList<String>(Arrays.asList("Aventure", "RPG", "decisions"))));
         games.add(new Game("LuigiM2", "Luigi's Mansion 2",7, "Depuis que Luigi a retrouvé son bon vieil aspirateur, la chasse aux fantomes est déclarée!", new ArrayList<String>(Arrays.asList("Aventure", "Plateformer3D", "Openworld"))));
         games.add(new Game("Teeworld", "Teeworld", 10, "Des ronds, un parcours, des guns et du fun", new ArrayList<String>(Arrays.asList("Multijoueur", "Plateformer2D", "Action"))));
-
+        */
 
     }
     // application.properties
@@ -130,15 +149,20 @@ public class MainController {
 
     @RequestMapping(value = {"/biblio"}, method = RequestMethod.GET)
     public String biblio(Model model){
+        System.out.println(games[0].getName() + "ici les jeux");
+
         model.addAttribute("games", games);
         model.addAttribute("selectedGames", selectedGames);
         SearchForm searchForm = new SearchForm();
         model.addAttribute("searchForm", searchForm);
+
+
         selectedGames.clear();
         if (currentSearch.equals("")){
 
             for (Game game: games
                  ) {
+                System.out.println(game.getImgPath());
                 selectedGames.add(game);
 
             }
@@ -151,12 +175,16 @@ public class MainController {
                     System.out.println(game.getName() + " but " + "search is:" + currentSearch);
                 }
             }
+
             for (Game game : games) {
-                for (String tag : game.getTags()) {
-                    if (tag.equalsIgnoreCase(currentSearch)) {
-                        selectedGames.add(game);
+                if (game.getTags() != null){
+                    for (String tag : game.getTags().split(",")) {
+                        if (tag.equalsIgnoreCase(currentSearch)) {
+                            selectedGames.add(game);
+                        }
                     }
                 }
+
             }
             if (selectedGames.size() < 1) {
 
@@ -187,32 +215,34 @@ public class MainController {
                             selectedGames.add(game);
                         }
                     }
-                    for (String tag : game.getTags()) {
-                        for (int i = 0; i < tag.toCharArray().length; i++) {
-                            int max_occ = 0;
-                            int occ = 0;
-                            if (Character.toLowerCase(tag.toCharArray()[i]) == Character.toLowerCase(currentSearch.toCharArray()[0])) {
-                                for (int j = 0; j < currentSearch.toCharArray().length; j++) {
-                                    if (i + j < tag.toCharArray().length && j < currentSearch.toCharArray().length) {
-                                        if (Character.toLowerCase(tag.toCharArray()[i + j]) == Character.toLowerCase(currentSearch.toCharArray()[j])) {
-                                            occ++;
-                                        } else {
-                                            occ = 0;
-                                        }
-                                        if (occ > max_occ) {
-                                            max_occ = occ;
-                                        }
+                    if (game.getTags() instanceof String) {
+                        for (String tag : game.getTags().split(",")) {
+                            for (int i = 0; i < tag.toCharArray().length; i++) {
+                                int max_occ = 0;
+                                int occ = 0;
+                                if (Character.toLowerCase(tag.toCharArray()[i]) == Character.toLowerCase(currentSearch.toCharArray()[0])) {
+                                    for (int j = 0; j < currentSearch.toCharArray().length; j++) {
+                                        if (i + j < tag.toCharArray().length && j < currentSearch.toCharArray().length) {
+                                            if (Character.toLowerCase(tag.toCharArray()[i + j]) == Character.toLowerCase(currentSearch.toCharArray()[j])) {
+                                                occ++;
+                                            } else {
+                                                occ = 0;
+                                            }
+                                            if (occ > max_occ) {
+                                                max_occ = occ;
+                                            }
 
-                                    } else {
-                                        break;
+                                        } else {
+                                            break;
+                                        }
                                     }
                                 }
-                            }
-                            if (max_occ > 2) {
-                                selectedGames.add(game);
+                                if (max_occ > 2) {
+                                    selectedGames.add(game);
                                 }
                             }
                         }
+                    }
                     }
                 }
             }
@@ -294,4 +324,13 @@ public class MainController {
         return "game_template";
     }
 
+    /*@RequestMapping(value = {"/histoire"}, method = RequestMethod.POST)
+    public ModelAndView search(Search searchForm, BindingResult result, Model model){
+        currentSearch = searchForm.getValue();
+        //model.addAttribute("games", games);
+        //model.addAttribute("currentSearch", currentSearch);
+        //return "redirect:/biblio";
+        return new ModelAndView("redirect:/biblio","model", model);
+
+    }*/
 }
