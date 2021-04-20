@@ -2,19 +2,19 @@ package org.layton.SpringBootThymeleaf.model;
 
 public class Note {
 
-    private int note = 4;
+    private double note;
     private String name = "" ;
 
-    public Note(int note, String name) {
+    public Note(double note, String name) {
         this.note = note;
         this.name = name;
     }
 
-    public int getNote() {
+    public double getNote() {
         return note;
     }
 
-    public void setNote(int note) {
+    public void setNote(double note) {
         this.note = note;
     }
 

@@ -21,7 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
 import java.awt.*;
+import java.math.RoundingMode;
 import java.sql.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -36,6 +38,7 @@ public class MainController {
     private static List<Vote> votes = new ArrayList<Vote>();
     private String currentSearch = "";
     private  ArrayList<Game> selectedGames = new ArrayList<Game>();
+    private Game current_game;
 
     @Autowired
     RestClientService restClientService;
@@ -75,8 +78,7 @@ public class MainController {
     @Value("${welcome.message}")
     private String message;
 
-    @Value("${error.message}")
-    private String errorMessage;
+    private String errorMessage = "Vous n'avez pas respecté les champs";
 
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
@@ -149,7 +151,8 @@ public class MainController {
 
     @RequestMapping(value = {"/biblio"}, method = RequestMethod.GET)
     public String biblio(Model model){
-        System.out.println(games[0].getName() + "ici les jeux");
+
+
 
         model.addAttribute("games", games);
         model.addAttribute("selectedGames", selectedGames);
@@ -315,14 +318,44 @@ public class MainController {
         for (Game game: games
              ) {
             if (game.getId().equalsIgnoreCase(id)){
-                model.addAttribute("game", game);
-                System.out.println(game.getName() +" "+ game.getNote());
+                current_game = game;
+
             }
 
         }
+        float com_note = current_game.getSumVote()/ current_game.getNbVote();
+        com_note = (float)Math.round(com_note * 10)/10;
+        model.addAttribute("com_note", com_note);
+        model.addAttribute("game", current_game);
+        NoteForm noteForm = new NoteForm();
+        model.addAttribute("noteForm", noteForm);
+        noteForm.setName(current_game.getId());
 
         return "game_template";
     }
+
+    @RequestMapping(value = {"/note"}, method = RequestMethod.POST)
+    public ModelAndView note(Note noteForm, BindingResult result, Model model){
+        double note = noteForm.getNote();
+
+        if (note >= 0 && note <= 10){
+            current_game.setSumVote((float)current_game.getSumVote()+(float)note);
+            current_game.setNbVote(current_game.getNbVote()+1);
+            //model.addAttribute("games", games);
+            //model.addAttribute("currentSearch", currentSearch);
+            //return "redirect:/biblio";
+            restClientService.updateGame(current_game.getId(),  current_game);
+        }else{
+            model.addAttribute("errorMessage", errorMessage);
+        }
+
+
+
+
+        return new ModelAndView("redirect:/game_template?id=" +current_game.getId(),"model", model);
+
+    }
+
 
     /*@RequestMapping(value = {"/histoire"}, method = RequestMethod.POST)
     public ModelAndView search(Search searchForm, BindingResult result, Model model){

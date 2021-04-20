@@ -2,11 +2,11 @@ package org.layton.SpringBootThymeleaf.form;
 
 public class NoteForm {
 
-    private int note = 4;
+    private double note ;
     private String name = "";
 
 
-    public void setNote(int note) {
+    public void setNote(double note) {
         this.note = note;
     }
 
@@ -14,7 +14,7 @@ public class NoteForm {
         this.name = name;
     }
 
-    public int getNote() {
+    public double getNote() {
         return note;
     }
 
