@@ -1,6 +1,9 @@
 package org.layton.SpringBootThymeleaf.controller;
 
+import jdk.nashorn.internal.objects.Global;
 import org.layton.SpringBootThymeleaf.RestClientService;
+import org.layton.SpringBootThymeleaf.form.Enumtag;
+import org.layton.SpringBootThymeleaf.form.TagList;
 import org.layton.SpringBootThymeleaf.model.Game;
 import org.layton.SpringBootThymeleaf.form.SearchForm;
 import org.layton.SpringBootThymeleaf.model.*;
@@ -11,14 +14,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -29,6 +30,9 @@ public class MainController {
     private String currentSearch = "";
     private  ArrayList<Game> selectedGames = new ArrayList<Game>();
     private Game current_game;
+    ArrayList<Enumtag>  allTags = new ArrayList<Enumtag>(Arrays.asList(Enumtag.values()));
+    ArrayList<Enumtag> selectedTags = new ArrayList<Enumtag>(Arrays.asList());
+
 
     @Autowired
     RestClientService restClientService;
@@ -86,35 +90,38 @@ public class MainController {
     @RequestMapping(value = {"/biblio"}, method = RequestMethod.GET)
     public String biblio(Model model){
 
-
-
+        model.addAttribute("allTags", allTags);
         model.addAttribute("games", games);
-        model.addAttribute("selectedGames", selectedGames);
+
         SearchForm searchForm = new SearchForm();
         model.addAttribute("searchForm", searchForm);
+        model.addAttribute("selectedTags",selectedTags);
 
-
+        model.addAttribute("selectableEnumTag", Enumtag.values());
+        TagList tagList = new TagList();
+        tagList.setEnumTags(new ArrayList<Enumtag>(selectedTags));
+        model.addAttribute("tagList",tagList);
         selectedGames.clear();
-        if (currentSearch.equals("")){
+        System.out.println(selectedTags + " selected tags");
+        System.out.println(selectedTags.isEmpty());
+
+        if (currentSearch.equals("") && selectedTags.isEmpty()){
 
             for (Game game: games
                  ) {
-                System.out.println(game.getImgPath());
                 selectedGames.add(game);
-
             }
 
-        }else {
+        }else if (currentSearch.equals("") != true) {
             for (Game game : games) {
                 if (game.getName().equalsIgnoreCase(currentSearch)) {
                     selectedGames.add(game);
                 } else {
-                    System.out.println(game.getName() + " but " + "search is:" + currentSearch);
                 }
             }
 
             for (Game game : games) {
-                if (game.getTags() != null){
+                if (game.getTags() != null) {
                     for (String tag : game.getTags().split(",")) {
                         if (tag.equalsIgnoreCase(currentSearch)) {
                             selectedGames.add(game);
@@ -123,14 +130,17 @@ public class MainController {
                 }
 
             }
+
             if (selectedGames.size() < 1) {
 
                 for (Game game : games) {
                     for (int i = 0; i < game.getName().toCharArray().length; i++) {
                         int max_occ = 0;
                         int occ = 0;
-                        if (Character.toLowerCase(game.getName().toCharArray()[i]) == Character.toLowerCase(currentSearch.toCharArray()[0])) {
+                        if (Character.toLowerCase(game.getName().toCharArray()[i]) == currentSearch.charAt(0)) {
+                            System.out.println("OwO");
                             for (int j = 0; j < currentSearch.toCharArray().length; j++) {
+                                System.out.println("OwO");
                                 if (i + j < game.getName().toCharArray().length && j < currentSearch.toCharArray().length) {
                                     if (Character.toLowerCase(game.getName().toCharArray()[i + j]) == Character.toLowerCase(currentSearch.toCharArray()[j])) {
                                         occ++;
@@ -180,23 +190,28 @@ public class MainController {
                             }
                         }
                     }
+                }
+            }
+        }else {
+            if (selectedTags.isEmpty() != true) {
+                for (Game game : games
+                ) {
+                    for (String tag : game.getTags().split(",")
+                    ) {
+                        if (selectedTags != null) {
+                            if (selectedTags.contains(Enumtag.valueOf(tag)) && selectedGames.contains(game) != true) {
+                                selectedGames.add(game);
+                                break;
+                            }
+                        }
+
+
                     }
                 }
             }
+        }
 
-
-
-            /*
-            for (Game game: games
-                 ) {
-
-                if(game.getTags().contains(currentSearch)){
-                    selectedGames.add(game);
-                }
-
-            }*/
-
-
+        model.addAttribute("selectedGames", selectedGames);
         currentSearch = "";
 
         return "biblio";
@@ -231,7 +246,6 @@ public class MainController {
     //public String saveNote(Model model, @ModelAttribute("noteForm") NoteForm noteForm ){
         model.addAttribute("games", games);
         //games.put(noteForm.getName(), 2);
-        System.out.println(" le nom est :" + noteForm.getName()+ " "+ String.valueOf(noteForm.getNote()));
         return "addNote";
 
     }
@@ -290,6 +304,56 @@ public class MainController {
 
     }
 
+
+
+    @RequestMapping(value = {"/update"}, method = RequestMethod.GET)
+    public String showForm(@RequestParam("id") String id, Model model){
+        initGames();
+        for (Game game: games
+        ) {
+            if (game.getId().equalsIgnoreCase(id)){
+                current_game = game;
+
+            }
+
+        }
+        model.addAttribute("game", current_game);
+        Game updatedGame = new Game();
+        model.addAttribute("updatedGame", updatedGame);
+
+
+
+        return  "update_form";
+    }
+
+
+
+    @RequestMapping(value = {"/update_process"}, method = RequestMethod.POST)
+    public ModelAndView update(Game updatedGame, BindingResult result, Model model){
+
+        /*current_game = new_game;
+        restClientService.updateGame(current_game.getId(), new_game);*/
+
+        restClientService.updateGame(current_game.getId(),updatedGame);
+
+        return new ModelAndView("redirect:/update?id=" +current_game.getId(),"model", model);
+
+
+    }
+
+    @RequestMapping(value = {"/upd"}, method = RequestMethod.POST)
+    public ModelAndView upd( TagList tagList, BindingResult result, Model model){
+        System.out.println(tagList + "obj");
+        System.out.println(tagList.getEnumTags() + " test");
+        /*current_game = new_game;
+        restClientService.updateGame(current_game.getId(), new_game);*/
+        selectedTags = tagList.getEnumTags();
+        return new ModelAndView("redirect:/biblio","model", model);
+
+        //return new ModelAndView("redirect:/biblio","model", model);
+
+
+    }
 
     /*@RequestMapping(value = {"/histoire"}, method = RequestMethod.POST)
     public ModelAndView search(Search searchForm, BindingResult result, Model model){

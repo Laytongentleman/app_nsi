@@ -10,4 +10,5 @@ var addToggle = document.querySelector(".add");
 
 addToggle.addEventListener("click", function(e) {
   add.classList.toggle("invisible");
+
 });

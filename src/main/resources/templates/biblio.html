@@ -12,7 +12,6 @@
         
         <meta name="author" content="Louis Nguyen Minh Tan, Léon Gard, Elisa Le Fay">
 
-
     
     
     </head>
@@ -61,6 +60,51 @@
 
 
     </header>
+
+    <audio id="inv" class="audio"
+           controls autoplay loop
+           src="/music/greenpathost.mp3">
+    </audio>
+
+    <button class="playbutton" ><img src="/img/pause.png" id="p"alt="" onclick="changeImg()"></button>
+    <button class="reloadbutton"><img src="/img/reload.png" alt=""></button>
+
+
+
+    <button class="tags-toggle"  ><img src="/img/togglebutton1.png" id="tt" alt="TOGGLE"></button>
+
+
+    <form class="tags hidden" th:object="${tagList}"  th:action="@{/upd}" method="POST">
+        <h1>tags</h1>
+        <!--<label th:each="tag : ${selectableEnumTag}"><input  type="checkbox" th:name="*{EnumTags}" th:value="${tag}"  th:text="${tag}" th:checked="true" ><span></span></label>-->
+        <label class="mark" th:each="tag : ${selectableEnumTag}"><input   type="checkbox" th:field="*{EnumTags}" th:value="${tag}"  th:text="${tag}"></input><span class="checkmark"></span></label>
+
+            <!--<<ul>
+                <li th:each="tag : ${selectableEnumTag}">
+                    <div>
+                        <input checked="true" type="checkbox" th:field="*{EnumTags}" th:value="${tag}">
+                        <label th:text="${tag}"></label>
+                    </div>
+                </li>
+            </ul>-->
+            <!--<label class="mark"><input type="checkbox"></input><span class="checkmark"></span>Action</label>
+            <label class="mark"><input type="checkbox">Plateformer2D</input><span class="checkmark"></span></label>
+            <label class="mark"><input type="checkbox">massively multiplayer</input><span class="checkmark"></span></label>
+            <label class="mark"><input type="checkbox">Party Game</input><span class="checkmark"></span></label>
+            <label class="mark"><input type="checkbox">Action</input><span class="checkmark"></span></label>
+            <label class="mark"><input type="checkbox">Aventure</input><span class="checkmark"></span></label>
+            <label class="mark"><input type="checkbox">Action</input><span class="checkmark"></span></label>
+            <label class="mark"><input type="checkbox">Aventure</input><span class="checkmark"></span></label>
+            <label class="mark"><input type="checkbox">Action</input><span class="checkmark"></span></label>
+            <label class="mark"><input type="checkbox">Aventure</input><span class="checkmark"></span></label>
+            <label class="mark"><input type="checkbox">Action</input><span class="checkmark"></span></label>
+            <label class="mark"><input type="checkbox">Aventure</input><span class="checkmark"></span></label>
+            <label class="mark"><input type="checkbox">Action</input><span class="checkmark"></span></label>
+            <label class="mark"><input type="checkbox">Aventure</input><span class="checkmark"></span></label>
+            <label class="mark"><input type="checkbox">Action</input><span class="checkmark"></span></label>-->
+        <input type="submit" value="Filtrer" id="validate">
+    </form>
+
     <div class="content">
 
 
@@ -73,8 +117,11 @@
 
     </div>
     <script src="/js/toggle_search.js"></script>
-    
-    
+    <script src="/js/audiobutton.js"></script>
+    <script src="/js/toggle_tags.js"></script>
+
+
+
 
 
 

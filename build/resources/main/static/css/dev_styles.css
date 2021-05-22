@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import url("https://fonts.google.com/share?selection.family=Press%20Start%202P");
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap');
 
 
 
@@ -13,7 +16,8 @@ body{
     width: 1280px;
     height: 720px;
     overflow: hidden;
-    margin: 150px auto;
+    margin: 50px auto;
+    margin-top: 80px;
 }
 .slides {
     width: calc(1280px * 3);
@@ -48,10 +52,7 @@ body{
 }
 
 
-body{
-    background-color:rgb(41, 41, 41);
-    background-image: url("/img/black-mosaic-tiles.png");
-}
+
 
 header{
     position: fixed;
@@ -110,7 +111,6 @@ nav.menu ul li{
 html {
     scroll-behavior: smooth;
 }
-
 button:focus {
     outline: none;
     box-shadow: none;
@@ -261,12 +261,51 @@ li#drop{
   .btn4{
     background-image: linear-gradient(to left,#FDA7DF,#9980FA,#FDA7DF);
   }
+  .btn5{
+    background-image: linear-gradient(to left,#faa5a5,#ff4e4e,#ffb0b0);
+  }
   
   .btn:hover{
     background-position: right;
   }
   
+.conteneur{
+    background-color: rgba(107, 107, 107, 0);
+    height: 10em;
+    width: 60em;
+    margin-left: 35em;
+    color:white;
+    font-family: 'Orbitron', sans-serif;
+    
+}
+
+.montitramoi{
+    text-shadow: 1px 1px 1px purple;
+    color:blue;
+}
+
+.monbouton{
+    padding:0px;
+    border-radius: 10px;
+    margin-top: 0px;
+    font-size: 1em;
+    padding-bottom: 2em;;
+    padding-top: 2em;
+    margin-left: 1.5em;
+    font-family: 'Coiny', cursive;
+    opacity: 0.9;
+
+}
+.txt{
+    color: white;
+    padding-top: 6em;
+    font-family: 'Cairo', sans-serif;
+}
 
 
-  
-  
+.monbouton a{
+    padding-left: 4em;
+    padding-right: 4em;
+    padding-bottom: 2em;
+    padding-top: 2em;
+}

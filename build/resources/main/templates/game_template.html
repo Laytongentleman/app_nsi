@@ -32,7 +32,7 @@
                         <button class="boutonmenuprincipal">Navigation</button>
                         <div class="dropdown-child" >
                             <a  class="dropdown-btn btn btn1" href="/index.html">Menu Principal</a>
-                            <a class="dropdown-btn btn btn2" href="/pages/dev.html">Developpement</a>
+                            <a class="dropdown-btn btn btn2" href="/pages/dev.html">Industrie</a>
                             <a class="dropdown-btn btn btn3" href="/biblio">Bibliothèque</a>
                             <a class="dropdown-btn btn btn4" href=""></a>
                             <a class="dropdown-btn" href=""></a>
@@ -52,6 +52,14 @@
 
 
     </header>
+    <audio id="inv" class="audio"
+           controls autoplay loop
+           src="/music/greenpathost.mp3">
+    </audio>
+
+    <button class="playbutton" ><img src="/img/pause.png" id="p"alt="" onclick="changeImg()"></button>
+    <button class="reloadbutton"><img src="/img/reload.png" alt=""></button>
+
     <div class="content" style="">
         <div class="row">
             <div class="column cl">
@@ -61,6 +69,7 @@
             <div class="column cr">
                 <div class="informations">
                     <h1 class="title" th:text="${game.name}">...</h1>
+                    <span th:text="${game.nbVote + '  votes'}"></span>
 
                     <div class="trow">
                         <div class="box nous" id="nous">
@@ -130,9 +139,8 @@
 
                 <div class="informations">
                     <h1 class="title">PRESENTATION</h1>
-                    <p>PRES PRESP RESPRES
-                        PRESPRES
-                    </p>
+                    <p th:text="${game.reviewTitle} ">
+                    <p/>
                     <h1 class="title">REVIEW</h1>
                     <p>review
                         reviewreviewreview
@@ -211,8 +219,9 @@
 
 
 
+    <script src = "/js/audiobutton.js"></script>
     <script src="/js/carousel.js">   </script>
-        <script src="/js/toggle_search.js">   </script>
+    <script src="/js/toggle_search.js">   </script>
     </body>
 
 </html>

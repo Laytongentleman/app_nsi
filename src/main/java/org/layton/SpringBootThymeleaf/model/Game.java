@@ -15,8 +15,13 @@ public class Game {
     private String videoPath = "";
     private ArrayList<String> imgPath;
     private ArrayList<String> platform;
+    private String reviewTitle;
+    private String reviewContent;
+    private String reviewConclusion;
 
-    public Game(String id, String name , float note, float sumVote, int nbVote, String description, String tags, String videoPath, ArrayList<String> imgPath, ArrayList<String> platform) {
+    /* disabled constructor in order to create instance for updatedGame in Controller
+    public Game(String id, String name , float note, float sumVote, int nbVote, String description, String tags, String videoPath, ArrayList<String> imgPath, ArrayList<String> platform, String reviewTitle,
+                String reviewContent, String reviewConclusion) {
         this.name = name;
         this.description= description;
         this.note= note;
@@ -27,10 +32,13 @@ public class Game {
         this.videoPath = videoPath;
         this.imgPath = imgPath;
         this.platform = platform;
+        this.reviewTitle = reviewTitle;
+        this.reviewContent = reviewContent;
+        this.reviewConclusion = reviewConclusion;
 
 
 
-    }
+    }*/
 
     public String getId() {
         return id;
@@ -111,5 +119,29 @@ public class Game {
 
     public void setPlatform(ArrayList<String> platform) {
         this.platform = platform;
+    }
+
+    public String getReviewTitle() {
+        return reviewTitle;
+    }
+
+    public void setReviewTitle(String reviewTitle) {
+        this.reviewTitle = reviewTitle;
+    }
+
+    public String getReviewContent() {
+        return reviewContent;
+    }
+
+    public void setReviewContent(String reviewContent) {
+        this.reviewContent = reviewContent;
+    }
+
+    public String getReviewConclusion() {
+        return reviewConclusion;
+    }
+
+    public void setReviewConclusion(String reviewConclusion) {
+        this.reviewConclusion = reviewConclusion;
     }
 }
